@@ -92,6 +92,10 @@ func NewPushNotification() (pn *PushNotification) {
 	return
 }
 
+func (pn *PushNotification) SetPayload(b []byte) error {
+	return json.Unmarshal(b, &pn.payload)
+}
+
 // AddPayload sets the "aps" payload section of the request. It also
 // has a hack described within to deal with specific zero values.
 func (pn *PushNotification) AddPayload(p *Payload) {
